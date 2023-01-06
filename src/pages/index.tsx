@@ -54,6 +54,9 @@ const Home = ({
         if (val === "audited" && dapp.audits && dapp.audits.length > 0) {
           acc = acc + 1
         }
+        if (val === "verified" && dapp.verified) {
+          acc = acc + 1
+        }
         return acc
       }, 0) === selectedFilters.length
     )
@@ -96,6 +99,7 @@ export const getStaticProps = async () => {
     featured: dapp.dotw,
     annonymous: dapp.teamInfo.anonymous,
     audits: dapp.audits,
+    verified: dapp.verified,
   }))
 
   return {

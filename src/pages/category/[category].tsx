@@ -70,6 +70,9 @@ const CategoryPage = ({
     if (category === "audited") {
       return dapp.audits && dapp.audits.length > 0
     }
+    if (category === "verified") {
+      return dapp.verified
+    }
     return dapp.categories.includes(category)
   })
 
@@ -84,6 +87,9 @@ const CategoryPage = ({
           acc = acc + 1
         }
         if (val === "audited" && dapp.audits && dapp.audits.length > 0) {
+          acc = acc + 1
+        }
+        if (val === "verified" && dapp.verified) {
           acc = acc + 1
         }
         if (dapp.categories.includes(val)) {
@@ -137,6 +143,7 @@ export const getStaticProps: GetStaticProps<{ dappCards: DappCard[] }> = async (
     featured: dapp.dotw,
     annonymous: dapp.teamInfo.anonymous,
     audits: dapp.audits,
+    verified: dapp.verified,
   }))
 
   return {
